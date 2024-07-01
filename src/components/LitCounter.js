@@ -9,10 +9,8 @@ export class LitCounter extends LitElement {
   constructor() {
     super();
 
-    counterStore.subscribe((value, oldValue) => {
-        console.log(`counter value changed from ${oldValue} to ${value}`)
+    counterStore.subscribe((value) => {
         this.count = value
-
         this.requestUpdate()
     })
   }
