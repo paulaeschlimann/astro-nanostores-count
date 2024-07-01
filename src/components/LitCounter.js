@@ -3,7 +3,7 @@ import { counterStore } from '../stores/count.js'
 
 export class LitCounter extends LitElement {
   static properties = {
-    lcount: { state: true },
+    count: { state: true },
   };
 
   constructor() {
