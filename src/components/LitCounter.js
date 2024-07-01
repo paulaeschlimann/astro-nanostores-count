@@ -15,19 +15,10 @@ export class LitCounter extends LitElement {
 
         this.requestUpdate()
     })
-
-    this.count = counterStore.get()
-    this.requestUpdate()
-    this.clicked = false
   }
 
   _increment(e) {
     counterStore.set(this.count + 1)
-  }
-
-  _random(e) {
-    const random = Math.floor(Math.random() * 10)
-    this.count = random
   }
 
   _current(e) {
