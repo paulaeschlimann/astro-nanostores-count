@@ -1,19 +1,15 @@
 import { LitElement, html } from 'lit';
-import { StoreController } from '@nanostores/lit'
+import { withStores } from '@nanostores/lit'
 import { counterStore } from '../stores/count.js'
 
-export class LitCounter extends LitElement {
-  static properties = {
-    count: {state: true}
-  };
+export class LitCounter extends withStores(LitElement, [counterStore]) {
 
   constructor() {
     super()
-    this.count = new StoreController(this, counterStore)
   }
 
   _increment(e) {
-    counterStore.set(this.count.value + 1)
+    counterStore.set(counterStore.get() + 1)
   }
 
   _current(e) {
@@ -25,7 +21,7 @@ export class LitCounter extends LitElement {
     return html`
       <div>
         <div>
-          Count  ${this.count.value} (Lit)
+          Count  ${counterStore.get()} (Lit)
         </div>
         <button @click="${this._increment}">
           + 1
