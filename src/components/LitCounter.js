@@ -9,10 +9,13 @@ export class LitCounter extends LitElement {
   constructor() {
     super();
 
+    this.count = 0
+  }
+
+  firstUpdated() {
     counterStore.subscribe((value) => {
-        this.count = value
-        this.requestUpdate()
-    })
+      this.count = value
+  })
   }
 
   _increment(e) {
