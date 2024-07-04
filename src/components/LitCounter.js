@@ -3,9 +3,18 @@ import { withStores } from '@nanostores/lit'
 import { counterStore } from '../stores/count.js'
 
 export class LitCounter extends withStores(LitElement, [counterStore]) {
+  static properties = {
+    count: {state: true}
+  }
 
   constructor() {
     super()
+
+    this.count = 0
+  }
+
+  firstUpdated() {
+    this.count = counterStore.get()
   }
 
   _increment(e) {
@@ -22,6 +31,7 @@ export class LitCounter extends withStores(LitElement, [counterStore]) {
       <div>
         <div>
           Count  ${counterStore.get()} (Lit)
+          Count  ${this.count}
         </div>
         <button @click="${this._increment}">
           + 1
