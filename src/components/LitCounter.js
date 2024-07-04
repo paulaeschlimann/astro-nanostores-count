@@ -13,6 +13,12 @@ export class LitCounter extends withStores(LitElement, [counterStore]) {
     this.count = 0
   }
 
+  update(changedProperties) {
+    super.update()
+
+    console.log(changedProperties)
+  }
+
   firstUpdated() {
     this.count = counterStore.get()
   }
